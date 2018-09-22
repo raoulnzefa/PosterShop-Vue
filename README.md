@@ -10,30 +10,19 @@ This is mock up online store for buying posters built with Vue JS 2 and Express 
 
 #### Installation
 
-1. Install this code on your local system
-     
-    1. Fork this repository (click 'Fork' button in top right corner)
-    2. Clone the forked repository on your local file system
-    
-        ```
-        cd /path/to/install/location
-        
-        git clone https://github.com/[your_username]/vuejs-poster-shop.git
-        ```
-
-2. Change directory into the local clone of the repository
+1. Change directory into the local clone of the repository
 
     ```
-    cd vuejs-poster-shop
+    cd PosterShop-Vue
     ```
 
-3. Install dependencies
+2. Install dependencies
 
     ```
     npm install
     ```
 
-4. Create a `.env` file by copying the sample
+3. Create a `.env` file by copying the sample
 
     ```
     cp .env_sample .env
@@ -47,13 +36,13 @@ This is mock up online store for buying posters built with Vue JS 2 and Express 
     
     Now edit the *.env* file and replace the `IMGUR_CLIENT_ID` with the client ID provided in the pre-installation
     
-5. Start project
+4. Start project
 
     ```
     npm run start
     ```
 
-6. Your site will be available at *localhost:[PORT]* where `PORT` is whatever value is set in your `.env` file.
+5. Your site will be available at *localhost:[PORT]* where `PORT` is whatever value is set in your `.env` file.
 
 #### It's not working!
 
