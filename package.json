@@ -1,20 +1,20 @@
 {
-  "name": "vuejs-poster-shop",
-  "version": "1.1.0",
-  "description": "Ultimate Vue.js Developers Course - Vue.js Poster Shop",
+  "name": "poster-shop",
+  "version": "1.0.0",
+  "description": "Poster Shop",
   "main": "index.js",
   "scripts": {
     "start": "nodemon ./index.js --ignore node_modules/ -e js,html,css"
   },
-  "author": "Anthony Gore <anthony@vuejsdevelopers.com>",
+  "author": "Aaron Mikhail Salud <mikhail.salud@gmail.com>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/vuejsdevelopers/vuejs-poster-shop"
+    "url": "https://github.com/aaronsalud/PosterShop-Vue"
   },
   "engines": {
     "node": ">=6.4"
   },
-  "homepage": "http://vuejs-poster-shop.vuejsdevelopers.com/",
+  "homepage": "http://",
   "keywords": [
     "vue",
     "vue.js",
