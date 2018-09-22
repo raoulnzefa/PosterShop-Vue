@@ -1,4 +1,4 @@
-# Poster Shop
+# PosterShop-Vue
 This is mock up online store for buying posters built with Vue JS 2 and Express with Node. This project is for demo purposes only. 
 
 #### Pre-installation
