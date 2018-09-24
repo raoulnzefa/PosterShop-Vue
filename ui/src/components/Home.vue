@@ -13,9 +13,11 @@
       <div class="cart">
         <h2>Shopping Cart</h2>
         <ul>
-          <li class="cart-item" v-for="item in cart" v-bind:key="item.id">
+          <li class="cart-item" v-for="(item, index) in cart" v-bind:key="item.id">
             <div class="item-title">{{item.title}}</div>
             <span class="item-qty">{{item.price | currency}} x {{item.quantity}}</span>
+            <button class="btn" v-on:click="addQuantity(index)">+</button>
+            <button class="btn" v-on:click="removeQuantity(index)">-</button>
           </li>
         </ul>
         <div v-if="cart.length > 0">
@@ -45,23 +47,42 @@ export default {
   }),
   methods: {
     addItem(index) {
-      this.total += 9.99
-
       let cartItem = this.cart.filter(
         item => item.id === this.items[index]['id']
       )
 
       if (cartItem.length === 1) {
         const cartItemIndex = this.cart.indexOf(cartItem[0])
-        this.cart[cartItemIndex].quantity++
-        this.cart[cartItemIndex].price += PRICE
+        this.addQuantity(cartItemIndex)
       } else {
         this.cart.push({
           ...this.items[index],
           quantity: 1,
           price: PRICE
         })
+        this.total += PRICE
       }
+    },
+    addQuantity(index) {
+      if (this.cart[index].quantity <= 0) {
+        this.deleteCartItem(index)
+      } else {
+        this.cart[index].quantity++
+        this.cart[index].price += PRICE
+        this.total += PRICE
+      }
+    },
+    removeQuantity(index) {
+      if (this.cart[index].quantity <= 1) {
+        this.deleteCartItem(index)
+      } else {
+        this.cart[index].quantity--
+        this.cart[index].price -= PRICE
+        this.total -= PRICE
+      }
+    },
+    deleteCartItem(index) {
+      this.cart.splice(index, 1)
     }
   },
   filters: {
