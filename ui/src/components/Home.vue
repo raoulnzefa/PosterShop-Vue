@@ -15,7 +15,7 @@
         <ul>
           <li class="cart-item" v-for="item in cart" v-bind:key="item.id">
             <div class="item-title">{{item.title}}</div>
-            <span class="item-qty">{{item.quantity}}</span>
+            <span class="item-qty">{{item.price}} x {{item.quantity}}</span>
           </li>
         </ul>
         <div v-if="cart.length > 0">
@@ -30,6 +30,7 @@
 </template>
 
 <script>
+const PRICE = 9.99
 export default {
   name: 'home',
   data: () => ({
@@ -53,10 +54,12 @@ export default {
       if (cartItem.length === 1) {
         const cartItemIndex = this.cart.indexOf(cartItem[0])
         this.cart[cartItemIndex].quantity++
+        this.cart[cartItemIndex].price += PRICE
       } else {
         this.cart.push({
           ...this.items[index],
-          quantity: 1
+          quantity: 1,
+          price: PRICE
         })
       }
     }
