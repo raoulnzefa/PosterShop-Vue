@@ -15,6 +15,7 @@
         <ul>
           <li class="cart-item" v-for="item in cart" v-bind:key="item.id">
             <div class="item-title">{{item.title}}</div>
+            <span class="item-qty">{{item.quantity}}</span>
           </li>
         </ul>
         <div v-if="cart.length > 0">
@@ -44,7 +45,10 @@ export default {
   methods: {
     addItem(index) {
       this.total += 9.99
-      this.cart.push(this.items[index])
+      this.cart.push({
+        ...this.items[index],
+        quantity: 1
+      })
     }
   }
 }
