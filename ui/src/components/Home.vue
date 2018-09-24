@@ -13,7 +13,9 @@
       <div class="cart">
         <h2>Shopping Cart</h2>
         <ul>
-          <li v-for="item in cart" v-bind:key="item.id">{{item.title}}</li>
+          <li class="cart-item" v-for="item in cart" v-bind:key="item.id">
+            <div class="item-title">{{item.title}}</div>
+          </li>
         </ul>
         <div>
           <div>Total: $ {{total}}</div>
