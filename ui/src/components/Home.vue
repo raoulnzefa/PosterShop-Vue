@@ -22,6 +22,11 @@ export default {
   name: 'home',
   data: () => ({
     total: 0
-  })
+  }),
+  methods: {
+    addItem() {
+      this.total += 9.99
+    }
+  }
 }
 </script>
