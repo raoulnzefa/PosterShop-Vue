@@ -20,7 +20,7 @@
         <div v-if="cart.length > 0">
           <div>Total: $ {{total}}</div>
         </div>
-        <div v-if="cart.length == 0">
+        <div v-else class="empty-cart">
           <div>There are currently no items in the cart</div>
         </div>
       </div>
