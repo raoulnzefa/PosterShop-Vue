@@ -45,10 +45,20 @@ export default {
   methods: {
     addItem(index) {
       this.total += 9.99
-      this.cart.push({
-        ...this.items[index],
-        quantity: 1
-      })
+
+      let cartItem = this.cart.filter(
+        item => item.id === this.items[index]['id']
+      )
+
+      if (cartItem.length === 1) {
+        const cartItemIndex = this.cart.indexOf(cartItem[0])
+        this.cart[cartItemIndex].quantity++
+      } else {
+        this.cart.push({
+          ...this.items[index],
+          quantity: 1
+        })
+      }
     }
   }
 }
