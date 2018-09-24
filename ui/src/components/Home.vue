@@ -10,7 +10,7 @@
       <div class="cart">
         <h2>Shopping Cart</h2>
         <div>
-          No items in the cart.
+          <div>Total: $ {{total}}</div>
         </div>
       </div>
     </div>
@@ -19,6 +19,9 @@
 
 <script>
 export default {
-  name: 'home'
+  name: 'home',
+  data: () => ({
+    total: 0
+  })
 }
 </script>
