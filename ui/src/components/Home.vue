@@ -7,7 +7,7 @@
       <div class="products">
         <div class="product" v-for="(item, index) in items" v-bind:key="item.id">
           <h4 class="product-title">{{item.title}}</h4>
-          <button class="add-to-cart" v-on:click="addItem(index)">Add to cart</button>
+          <button class="add-to-cart btn" v-on:click="addItem(index)">Add to cart</button>
         </div>
       </div>
       <div class="cart">
