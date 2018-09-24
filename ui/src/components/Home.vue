@@ -17,8 +17,11 @@
             <div class="item-title">{{item.title}}</div>
           </li>
         </ul>
-        <div>
+        <div v-if="cart.length > 0">
           <div>Total: $ {{total}}</div>
+        </div>
+        <div v-if="cart.length == 0">
+          <div>There are currently no items in the cart</div>
         </div>
       </div>
     </div>
