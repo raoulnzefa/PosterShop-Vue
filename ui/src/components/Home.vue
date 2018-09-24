@@ -15,11 +15,11 @@
         <ul>
           <li class="cart-item" v-for="item in cart" v-bind:key="item.id">
             <div class="item-title">{{item.title}}</div>
-            <span class="item-qty">{{item.price}} x {{item.quantity}}</span>
+            <span class="item-qty">{{item.price | currency}} x {{item.quantity}}</span>
           </li>
         </ul>
         <div v-if="cart.length > 0">
-          <div>Total: $ {{total}}</div>
+          <div>Total: {{total | currency}}</div>
         </div>
         <div v-else class="empty-cart">
           <div>There are currently no items in the cart</div>
@@ -62,6 +62,11 @@ export default {
           price: PRICE
         })
       }
+    }
+  },
+  filters: {
+    currency(price) {
+      return '$'.concat(price.toFixed(2))
     }
   }
 }
