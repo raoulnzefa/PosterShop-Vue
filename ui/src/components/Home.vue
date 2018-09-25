@@ -23,6 +23,9 @@
           </div>
           <div>
             <h4 class="product-title">{{item.title}}</h4>
+            <p>Price:
+              <strong>{{price | currency}}</strong>
+            </p>
             <button class="add-to-cart btn" v-on:click="addItem(index)">Add to cart</button>
           </div>
         </div>
@@ -58,6 +61,7 @@ export default {
     cart: [],
     search: 'random',
     loading: false,
+    price: PRICE,
     searchResults: {
       term: '',
       total: 0
