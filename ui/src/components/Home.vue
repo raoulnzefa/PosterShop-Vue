@@ -41,12 +41,7 @@ export default {
   name: 'home',
   data: () => ({
     total: 0,
-    items: [
-      { id: 1, title: 'Item 1' },
-      { id: 2, title: 'Item 2' },
-      { id: 3, title: 'Item 3' },
-      { id: 4, title: 'Item 4' }
-    ],
+    items: [],
     cart: [],
     search: ''
   }),
@@ -91,9 +86,9 @@ export default {
     },
     onSubmit() {
       this.$http
-        .get('/api/search/'.concat('90s'))
+        .get('/api/search/'.concat(this.search))
         .then(response => {
-          console.log(response)
+          console.log(response.data)
         })
         .catch(error => {
           console.log(error)
