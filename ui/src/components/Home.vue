@@ -2,6 +2,9 @@
   <div>
     <div class="header">
       <h1>Poster Shop</h1>
+      <form class="searchbar">
+        <input type="submit" value="Search" class="btn">
+      </form>
     </div>
     <div class="main">
       <div class="products">
