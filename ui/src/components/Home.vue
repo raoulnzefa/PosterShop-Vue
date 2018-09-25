@@ -3,6 +3,7 @@
     <div class="header">
       <h1>Poster Shop</h1>
       <form class="searchbar" v-on:submit.prevent="onSubmit">
+        <input type="text" placeholder="Search for posters" v-model="search">
         <input type="submit" value="Search" class="btn">
       </form>
     </div>
@@ -46,7 +47,8 @@ export default {
       { id: 3, title: 'Item 3' },
       { id: 4, title: 'Item 4' }
     ],
-    cart: []
+    cart: [],
+    search: ''
   }),
   methods: {
     addItem(index) {
@@ -88,7 +90,7 @@ export default {
       this.cart.splice(index, 1)
     },
     onSubmit(e) {
-      console.log(e)
+      console.log(this.search)
     }
   },
   filters: {
