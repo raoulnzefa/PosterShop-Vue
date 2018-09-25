@@ -53,7 +53,11 @@ export default {
     total: 0,
     items: [],
     cart: [],
-    search: ''
+    search: '',
+    searchResults: {
+      searchTerm: '',
+      total: 0
+    }
   }),
   methods: {
     addItem(index) {
@@ -99,6 +103,8 @@ export default {
         .get('/api/search/'.concat(this.search))
         .then(response => {
           this.items = response.data
+          this.searchResults.search = this.search
+          this.searchResults.total = this.items.length
         })
         .catch(error => {
           console.log(error)
