@@ -2,7 +2,7 @@
   <div>
     <div class="header">
       <h1>Poster Shop</h1>
-      <form class="searchbar">
+      <form class="searchbar" v-on:submit.prevent="onSubmit">
         <input type="submit" value="Search" class="btn">
       </form>
     </div>
@@ -86,6 +86,9 @@ export default {
     },
     deleteCartItem(index) {
       this.cart.splice(index, 1)
+    },
+    onSubmit(e) {
+      console.log(e)
     }
   },
   filters: {
