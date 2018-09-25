@@ -4,7 +4,8 @@
   "description": "Poster Shop",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon ./server.js --ignore node_modules/ -e js,html,css"
+    "start": "nodemon ./server.js --ignore node_modules/ -e js,html,css",
+    "server": "nodemon server.js"
   },
   "author": "Aaron Mikhail Salud <mikhail.salud@gmail.com>",
   "repository": {
