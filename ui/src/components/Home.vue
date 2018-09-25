@@ -56,13 +56,16 @@ export default {
     total: 0,
     items: [],
     cart: [],
-    search: '',
+    search: 'random',
     loading: false,
     searchResults: {
       term: '',
       total: 0
     }
   }),
+  mounted() {
+    this.onSubmit()
+  },
   methods: {
     addItem(index) {
       let cartItem = this.cart.filter(
