@@ -10,8 +10,15 @@
     <div class="main">
       <div class="products">
         <div class="product" v-for="(item, index) in items" v-bind:key="item.id">
-          <h4 class="product-title">{{item.title}}</h4>
-          <button class="add-to-cart btn" v-on:click="addItem(index)">Add to cart</button>
+          <div>
+            <div class="product-image">
+              <img v-bind:src="item.link" alt="">
+            </div>
+          </div>
+          <div>
+            <h4 class="product-title">{{item.title}}</h4>
+            <button class="add-to-cart btn" v-on:click="addItem(index)">Add to cart</button>
+          </div>
         </div>
       </div>
       <div class="cart">
