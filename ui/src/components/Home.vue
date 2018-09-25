@@ -9,8 +9,8 @@
     </div>
     <div class="main">
       <div class="products">
-        <div class="search-results">
-          Found {{items.length}} results for search term {{search}}
+        <div class="search-results" v-if="searchResults.total != '' && searchResults.term != ''">
+          Found {{searchResults.total}} results for search term: {{searchResults.term}}.
         </div>
         <div class="product" v-for="(item, index) in items" v-bind:key="item.id">
           <div>
@@ -55,7 +55,7 @@ export default {
     cart: [],
     search: '',
     searchResults: {
-      searchTerm: '',
+      term: '',
       total: 0
     }
   }),
@@ -103,7 +103,7 @@ export default {
         .get('/api/search/'.concat(this.search))
         .then(response => {
           this.items = response.data
-          this.searchResults.search = this.search
+          this.searchResults.term = this.search
           this.searchResults.total = this.items.length
         })
         .catch(error => {
