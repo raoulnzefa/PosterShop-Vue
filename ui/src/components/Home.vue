@@ -9,8 +9,11 @@
     </div>
     <div class="main">
       <div class="products">
-        <div class="search-results" v-if="searchResults.total != '' && searchResults.term != ''">
+        <div class="search-results" v-if="searchResults.total != '' && searchResults.term != '' && !loading">
           Found {{searchResults.total}} results for search term: {{searchResults.term}}.
+        </div>
+        <div class="search-results" v-if="loading">
+          Searching Please Wait...
         </div>
         <div class="product" v-for="(item, index) in items" v-bind:key="item.id">
           <div>
@@ -54,6 +57,7 @@ export default {
     items: [],
     cart: [],
     search: '',
+    loading: false,
     searchResults: {
       term: '',
       total: 0
@@ -99,14 +103,18 @@ export default {
       this.cart.splice(index, 1)
     },
     onSubmit() {
+      this.items = []
+      this.loading = true
       this.$http
         .get('/api/search/'.concat(this.search))
         .then(response => {
           this.items = response.data
           this.searchResults.term = this.search
           this.searchResults.total = this.items.length
+          this.loading = false
         })
         .catch(error => {
+          this.loading = false
           console.log(error)
         })
     }
