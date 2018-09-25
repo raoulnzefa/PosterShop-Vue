@@ -9,6 +9,9 @@
     </div>
     <div class="main">
       <div class="products">
+        <div class="search-results">
+          Found {{items.length}} results for search term {{search}}
+        </div>
         <div class="product" v-for="(item, index) in items" v-bind:key="item.id">
           <div>
             <div class="product-image">
