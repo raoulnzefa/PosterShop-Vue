@@ -88,7 +88,7 @@ export default {
       this.$http
         .get('/api/search/'.concat(this.search))
         .then(response => {
-          console.log(response.data)
+          this.items = response.data
         })
         .catch(error => {
           console.log(error)
