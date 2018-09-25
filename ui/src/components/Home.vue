@@ -89,8 +89,15 @@ export default {
     deleteCartItem(index) {
       this.cart.splice(index, 1)
     },
-    onSubmit(e) {
-      console.log(this.search)
+    onSubmit() {
+      this.$http
+        .get('/api/search/'.concat('90s'))
+        .then(response => {
+          console.log(response)
+        })
+        .catch(error => {
+          console.log(error)
+        })
     }
   },
   filters: {
