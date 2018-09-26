@@ -40,10 +40,12 @@
             <button class="btn" v-on:click="removeQuantity(index)">-</button>
           </li>
         </ul>
-        <div v-if="cart.length > 0">
-          <div>Total: {{total | currency}}</div>
-        </div>
-        <div v-else class="empty-cart">
+        <transition name="fade">
+          <div v-if="cart.length > 0">
+            <div>Total: {{total | currency}}</div>
+          </div>
+        </transition>
+        <div v-if="cart.length ===0" class="empty-cart">
           <div>There are currently no items in the cart</div>
         </div>
       </div>
