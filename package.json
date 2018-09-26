@@ -4,8 +4,10 @@
   "description": "Poster Shop",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon ./server.js --ignore node_modules/ -e js,html,css",
-    "server": "nodemon server.js"
+    "start": "node server.js ",
+    "server": "nodemon server.js",
+    "client": "cd ui; yarn serve",
+    "dev": "concurrently \"npm start\" \"npm run client\""
   },
   "author": "Aaron Mikhail Salud <mikhail.salud@gmail.com>",
   "repository": {
@@ -26,6 +28,7 @@
   "dependencies": {
     "axios": "~0.15.2",
     "body-parser": "~1.18.2",
+    "concurrently": "^4.0.1",
     "dotenv": "~2.0.0",
     "express": "^4.14.0",
     "querystring": "~0.2.0",
