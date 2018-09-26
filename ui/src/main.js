@@ -3,10 +3,12 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import VueResource from 'vue-resource'
+import VueScrollMonitor from 'vue-scrollmonitor'
 import './registerServiceWorker'
 
 Vue.config.productionTip = false
 Vue.use(VueResource)
+Vue.use(VueScrollMonitor)
 Vue.http.options.emulateJSON = true
 
 new Vue({
