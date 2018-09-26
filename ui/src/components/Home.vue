@@ -30,6 +30,7 @@
           </div>
         </div>
       </div>
+      <div id="product-list-bottom"></div>
       <div class="cart">
         <h2>Shopping Cart</h2>
         <transition-group name="fade" tag="ul">
@@ -55,12 +56,14 @@
 
 <script>
 const PRICE = 9.99
+const LIMIT = 10
 export default {
   name: 'home',
   data: () => ({
     total: 0,
     items: [],
     cart: [],
+    results: [],
     search: 'random',
     loading: false,
     price: PRICE,
@@ -117,7 +120,8 @@ export default {
       this.$http
         .get('/api/search/'.concat(this.search))
         .then(response => {
-          this.items = response.data
+          this.results = response.data
+          this.items = this.results.slice(0, LIMIT)
           this.searchResults.term = this.search
           this.searchResults.total = this.items.length
           this.loading = false
