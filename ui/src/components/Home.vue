@@ -145,6 +145,10 @@ export default {
       this.cart.splice(index, 1)
     },
     onSubmit() {
+      if (this.search.length === 0) {
+        return
+      }
+
       this.items = []
       this.loading = true
       this.$http
