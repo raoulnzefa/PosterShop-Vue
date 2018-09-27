@@ -83,7 +83,6 @@ export default {
 
     watcher.enterViewport(() => {
       if (this.results && this.results.length > 0) {
-        console.log('here')
         vm.appendItems()
       }
     })
@@ -96,6 +95,8 @@ export default {
           this.items.length + LIMIT
         )
         this.items = this.items.concat(append)
+        this.searchResults.term = this.search
+        this.searchResults.total = this.items.length
       }
     },
     addItem(index) {
@@ -144,9 +145,6 @@ export default {
         .then(response => {
           this.results = response.data
           this.appendItems()
-          this.searchResults.term = this.search
-          this.searchResults.total = this.items.length
-
           this.loading = false
         })
         .catch(error => {
