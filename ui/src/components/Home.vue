@@ -50,7 +50,9 @@
           </div>
         </div>
       </div>
-      <div id="product-list-bottom"></div>
+      <div id="product-list-bottom">
+        <div v-if="items.length === results.length && results.length > 0"> No more items</div>
+      </div>
     </div>
 </template>
 
