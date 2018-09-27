@@ -51,7 +51,7 @@
         </div>
       </div>
       <div id="product-list-bottom">
-        <div v-if="items.length === results.length && results.length > 0"> No more items</div>
+        <div v-if="noMoreItems"> No more items</div>
       </div>
     </div>
 </template>
@@ -88,6 +88,13 @@ export default {
         vm.appendItems()
       }
     })
+  },
+  computed: {
+    noMoreItems() {
+      return (
+        this.items.length === this.results.length && this.results.length > 0
+      )
+    }
   },
   methods: {
     appendItems() {
