@@ -82,12 +82,21 @@ export default {
     var watcher = scrollMonitor.create(elem)
 
     watcher.enterViewport(() => {
-      vm.appendItems()
+      if (this.results && this.results.length > 0) {
+        console.log('here')
+        vm.appendItems()
+      }
     })
   },
   methods: {
     appendItems() {
-      console.log('here')
+      if (this.items.length < this.results.length) {
+        var append = this.results.slice(
+          this.items.length,
+          this.items.length + LIMIT
+        )
+        this.items = this.items.concat(append)
+      }
     },
     addItem(index) {
       let cartItem = this.cart.filter(
@@ -134,9 +143,10 @@ export default {
         .get('/api/search/'.concat(this.search))
         .then(response => {
           this.results = response.data
-          this.items = this.results.slice(0, LIMIT)
+          this.appendItems()
           this.searchResults.term = this.search
           this.searchResults.total = this.items.length
+
           this.loading = false
         })
         .catch(error => {
