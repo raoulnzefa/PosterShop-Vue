@@ -20,41 +20,43 @@
             <div class="product-image">
               <img v-bind:src="item.link" alt="">
             </div>
+            </div>
+            <div>
+              <h4 class="product-title">{{item.title}}</h4>
+              <p>Price:
+                <strong>{{price | currency}}</strong>
+              </p>
+              <button class="add-to-cart btn" v-on:click="addItem(index)">Add to cart</button>
+            </div>
           </div>
-          <div>
-            <h4 class="product-title">{{item.title}}</h4>
-            <p>Price:
-              <strong>{{price | currency}}</strong>
-            </p>
-            <button class="add-to-cart btn" v-on:click="addItem(index)">Add to cart</button>
+        </div>
+        <div class="cart">
+          <h2>Shopping Cart</h2>
+          <transition-group name="fade" tag="ul">
+            <li class="cart-item" v-for="(item, index) in cart" v-bind:key="item.id">
+              <div class="item-title">{{item.title}}</div>
+              <span class="item-qty">{{item.price | currency}} x {{item.quantity}}</span>
+              <button class="btn" v-on:click="addQuantity(index)">+</button>
+              <button class="btn" v-on:click="removeQuantity(index)">-</button>
+            </li>
+          </transition-group>
+          <transition name="fade">
+            <div v-if="cart.length > 0">
+              <div>Total: {{total | currency}}</div>
+            </div>
+          </transition>
+          <div v-if="cart.length ===0" class="empty-cart">
+            <div>There are currently no items in the cart</div>
           </div>
         </div>
       </div>
       <div id="product-list-bottom"></div>
-      <div class="cart">
-        <h2>Shopping Cart</h2>
-        <transition-group name="fade" tag="ul">
-          <li class="cart-item" v-for="(item, index) in cart" v-bind:key="item.id">
-            <div class="item-title">{{item.title}}</div>
-            <span class="item-qty">{{item.price | currency}} x {{item.quantity}}</span>
-            <button class="btn" v-on:click="addQuantity(index)">+</button>
-            <button class="btn" v-on:click="removeQuantity(index)">-</button>
-          </li>
-        </transition-group>
-        <transition name="fade">
-          <div v-if="cart.length > 0">
-            <div>Total: {{total | currency}}</div>
-          </div>
-        </transition>
-        <div v-if="cart.length ===0" class="empty-cart">
-          <div>There are currently no items in the cart</div>
-        </div>
-      </div>
     </div>
-  </div>
 </template>
 
 <script>
+import scrollMonitor from 'scrollmonitor'
+
 const PRICE = 9.99
 const LIMIT = 10
 export default {
@@ -74,8 +76,19 @@ export default {
   }),
   mounted() {
     this.onSubmit()
+
+    var vm = this
+    var elem = document.getElementById('product-list-bottom')
+    var watcher = scrollMonitor.create(elem)
+
+    watcher.enterViewport(() => {
+      vm.appendItems()
+    })
   },
   methods: {
+    appendItems() {
+      console.log('here')
+    },
     addItem(index) {
       let cartItem = this.cart.filter(
         item => item.id === this.items[index]['id']
